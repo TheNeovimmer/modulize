@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="assets/modulize.svg" alt="modulize logo" width="96" height="96">
-</p>
-
 <h1 align="center">modulize</h1>
 
 <p align="center"><strong>Say goodbye to messy code.</strong></p>
