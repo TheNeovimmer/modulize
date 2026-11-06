@@ -1,0 +1,17 @@
+You know the shape of a messy codebase. One feature, five folders by layer. A "temporary" workaround pinned with a TODO that's been load-bearing for a year. So how do you say goodbye to messy code? Here's the six-phase answer.
+
+Phase zero: the safety net. Clean tree, baseline suite, a checkpoint — before a single file is touched.
+
+Phase one: one question. Comments or tests? We do exactly what you pick, nothing more.
+
+Phase two: map the whole codebase. Skeleton, import graph — subagents with fixed briefs gather evidence.
+
+Phase three: list every problem. Hidden links, needless links, surplus, special cases — triaged by leverage, blast radius and risk.
+
+Phase four: redesign from first principles. The one fix that makes the whole cluster impossible.
+
+Phase five: fix it. One concern per commit. Suite green between.
+
+Phase six: loop. Fresh-eyes sweep, import audit, until nothing's worth fixing remains.
+
+Behavior identical. Structure rebuilt. /modulize. Say goodbye to messy code.
