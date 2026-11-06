@@ -9,6 +9,7 @@
 <p align="center">
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-0A0A0A.svg"></a>
   <a href="CHANGELOG.md"><img alt="Release 1.0.0" src="https://img.shields.io/badge/release-1.0.0-0A0A0A.svg"></a>
+  <a href="https://skills.sh/TheNeovimmer/modulize"><img alt="skills.sh" src="https://skills.sh/b/TheNeovimmer/modulize"></a>
   <img alt="Works with any Agent Skills agent" src="https://img.shields.io/badge/agent%20skills-compatible-0A0A0A.svg">
 </p>
 
@@ -64,6 +65,15 @@ cp -r modulize/skills/modulize ~/.agents/skills/modulize
 | **Hidden coupling** | Split by layer, global state, format knowledge in two places | Colocate by domain; one parser owns the shape; pass it in |
 | **Needless coupling** | Callers on internals, stable code importing volatile code | Depend on what changes less; core owns the seam |
 | **Special cases** | `if` for one value, one-caller parameters, disabled tests | Requirements the design never had — accounted for, not patched |
+
+## When to reach for it
+
+- A "quick fix" turns into editing five folders by layer
+- "Temporary" workarounds, sleeps and swallowed errors have become load-bearing
+- You inherited the codebase — from a person, or from an agent — and trust it less every week
+- You want the deep refactor *instead* of the big-bang rewrite conversation
+
+Not for: a one-file fix or a style nit — ask your agent directly. `/modulize` is for when the problem is the **shape of the codebase**, not the code in front of you.
 
 ## How it works
 

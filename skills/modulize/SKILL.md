@@ -1,6 +1,6 @@
 ---
 name: modulize
-description: Say goodbye to messy code. A whole-codebase refactor that hunts leaky abstractions, copy-paste, temporary workarounds and useless wrappers, then redesigns the system from first principles.
+description: Whole-codebase refactor skill for AI agents. Hunts leaky abstractions, copy-paste, temporary workarounds and useless wrappers — then redesigns the system from first principles.
 disable-model-invocation: true
 argument-hint: "[optional area or concern to focus on]"
 ---
@@ -9,11 +9,16 @@ argument-hint: "[optional area or concern to focus on]"
 
 **Say goodbye to messy code.**
 
-Modulize is a whole-codebase refactor pass. It asks one question of everything in the repository — *should these pieces change together?* — finds every place the code gets it wrong, redesigns those places from first principles, and fixes them all.
+Modulize asks one question of everything in the repository — *should these pieces change together?* — finds every place the answer is wrong, redesigns the system from first principles, and fixes it all. Behavior stays identical apart from logged bug fixes.
 
-You start with a codebase where one change touches five folders by layer, callers know things they shouldn't, and "temporary" has become permanent. You finish with a codebase where a typical change lands in one place, imports point at what changes less, and nothing exists without a reason of its own to change.
+**What you get**
 
-The named enemies: leaky abstractions, copy-paste, temporary workarounds, useless wrappers. The unnamed ones — hidden coupling, needless coupling, surplus code, special cases — are just as much the target. The full taxonomy lives in [catalog.md](catalog.md).
+- **A change that lands in one place** — not five folders by layer; a finished feature is a slice, not a scavenger hunt
+- **A full catalog of the messes** — hidden links, needless links, surplus code and special cases — every entry triaged by leverage, blast radius and risk
+- **A decision log worth reading** — every fix written above the problems it solves; the one behind many
+- **A pass that doesn't stop at "good enough"** — it loops until a fresh-eyes sweep finds nothing worth fixing
+
+The named enemies: leaky abstractions, copy-paste, temporary workarounds, useless wrappers. The full taxonomy lives in [catalog.md](catalog.md).
 
 ## Principles
 
