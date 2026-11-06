@@ -3,3 +3,9 @@ node_modules/
 *.log
 .idea/
 .vscode/
+
+# Local-only render artifacts (promo video frames/files) — scripts and storyboard stay in git
+assets/promo/*.mp4
+assets/promo/*.wav
+assets/promo/clip*.mp4
+assets/promo/scenes/
