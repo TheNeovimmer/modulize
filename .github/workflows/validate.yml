@@ -1,0 +1,49 @@
+name: validate
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  skill-structure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Required files exist
+        run: |
+          set -e
+          for f in skills/modulize/SKILL.md skills/modulize/catalog.md README.md LICENSE CHANGELOG.md; do
+            test -f "$f" || { echo "missing: $f"; exit 1; }
+          done
+
+      - name: Skill frontmatter is valid
+        run: |
+          set -e
+          head -1 skills/modulize/SKILL.md | grep -qx -- '---'
+          grep -qE '^name: modulize$' skills/modulize/SKILL.md
+          grep -qE '^description: .+' skills/modulize/SKILL.md
+          grep -qE '^disable-model-invocation: true$' skills/modulize/SKILL.md
+          grep -qE '^argument-hint: .+' skills/modulize/SKILL.md
+          awk 'NR>1 && /^---$/{found=1; exit} END{exit !found}' skills/modulize/SKILL.md
+
+      - name: Referenced catalog exists
+        run: grep -q 'catalog.md' skills/modulize/SKILL.md
+
+      - name: Internal markdown links resolve
+        run: |
+          set -e
+          fail=0
+          for md in $(git ls-files '*.md'); do
+            dir=$(dirname "$md")
+            for link in $(grep -oE '\]\([^)#]+\)' "$md" | sed -E 's/\]\(([^)#]+)\)/\1/' | grep -vE '^(https?:|mailto:)' | sort -u); do
+              if [ ! -e "$dir/$link" ] && [ ! -e "$link" ]; then
+                echo "broken link in $md -> $link"
+                fail=1
+              fi
+            done
+          done
+          exit $fail
+
+      - name: README carries the public install command
+        run: grep -q 'npx skills add TheNeovimmer/modulize' README.md
